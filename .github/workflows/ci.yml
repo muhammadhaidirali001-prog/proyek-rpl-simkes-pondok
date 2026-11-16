@@ -1,0 +1,56 @@
+name: SIMKES PONDOK CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test:
+    name: Build & Run Unit Tests
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: simkes_santri
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP Environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, mysqli, pdo, pdo_mysql, curl, json, fileinfo
+          coverage: none
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Install Composer Dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+
+      - name: Prepare Environment File
+        run: |
+          cp env .env
+          sed -i "s/database.default.hostname = .*/database.default.hostname = '127.0.0.1'/g" .env
+          sed -i "s/database.default.database = .*/database.default.database = 'simkes_santri'/g" .env
+          sed -i "s/database.default.username = .*/database.default.username = 'root'/g" .env
+          sed -i "s/database.default.password = .*/database.default.password = 'root'/g" .env
+          sed -i "s/AI_PROVIDER = .*/AI_PROVIDER = 'mock'/g" .env
+
+      - name: Run Database Migrations & Seeds
+        run: |
+          php spark migrate --all
+          php spark db:seed DatabaseSeeder
+
+      - name: Run Automated PHPUnit Tests
+        run: vendor/bin/phpunit --no-coverage
