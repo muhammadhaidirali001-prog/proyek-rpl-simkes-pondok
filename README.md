@@ -480,9 +480,7 @@ Berdasarkan ketentuan kurikulum OBE mata kuliah Rekayasa Perangkat Lunak, presen
 
 | Tahapan Video | Durasi | Topik Pembahasan | Tautan Video |
 | :--- | :---: | :--- | :---: |
-| **Video Progres 1: PRD & Konsep Aplikasi** | 3–5 Menit | Pembahasan identifikasi masalah nyata pesantren, analisis kebutuhan fungsional & non-fungsional, serta peran strategis fitur AI yang ditanamkan. | [Tonton di YouTube / Google Drive](https://youtube.com/watch?v=CONTOH_VIDEO_PROGRES_1) |
-| **Video Progres 2: Pemodelan UML & UI/UX** | 5–7 Menit | Pembedahan mendalam 4 Diagram UML Utama (Use Case, Activity, Class SOLID, Sequence Diagram) dan demonstrasi walkthrough prototipe interaktif UI/UX Figma. | [Tonton di YouTube / Google Drive](https://youtube.com/watch?v=CONTOH_VIDEO_PROGRES_2) |
-| **Video Final: Live Demo Aplikasi Web & Sistem Utuh** | 8–12 Menit | Elevator Pitch, arsitektur sistem, Live Demo utuh fitur aplikasi web, demonstrasi real-time Asisten AI (Guardrails & DB Reader), pembuktian Unit Test, dan status hijau CI/CD Actions. | [Tonton di YouTube / Google Drive](https://youtube.com/watch?v=CONTOH_VIDEO_FINAL_DEMO) |
+| **Video Progres 1: PRD & Konsep Aplikasi** | 3–5 Menit | Pembahasan identifikasi masalah nyata pesantren, analisis kebutuhan fungsional & non-fungsional, serta peran strategis fitur AI yang ditanamkan. | [Tonton di YouTube ([https://youtube.com/watch?v=CONTOH_VIDEO_PROGRES_](https://youtu.be/FQjooW_GrgI)) |
 
 > 🌐 **Tautan Aplikasi Web Live (Cloud Deployed):**  
 > `https://simkes-pondok.live` *(atau tautan deployment hosting aktif)*
